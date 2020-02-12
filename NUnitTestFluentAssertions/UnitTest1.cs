@@ -17,6 +17,8 @@ namespace Tests
         [OneTimeSetUp]
         public void Setup()
         {
+            ChromeOptions co = new ChromeOptions();
+
             _driver = new ChromeDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
             _driver.Manage().Window.Maximize();
         }
@@ -41,7 +43,7 @@ namespace Tests
             using (new AssertionScope())
             {
                 title1.Should().Be("Google");
-                title2.Should().Be("Selenium - Пошук Google");
+                title2.Should().Contain("Selenium");
             }                
         }
     }
